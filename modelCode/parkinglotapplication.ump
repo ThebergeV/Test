@@ -1,0 +1,108 @@
+class Employee
+{
+  isA AccountHolder;
+}
+
+class AccountHolder
+{
+  abstract;
+  name;
+  email;
+  number;
+  int accountId;
+  password;
+}
+
+class Services
+{
+  abstract;
+
+  Double price;
+  description;
+  int serviceID;
+}
+
+class Customer
+{
+  abstract;
+  isA AccountHolder;
+  licensePlateNumber;
+  
+}
+
+class NonMonthlyUser
+{
+  isA Customer;
+}
+
+class ServiceType
+{
+  isA Services;
+  ServiceJob serviceJob;
+}
+
+class Parking
+{
+  isA Services;
+  * -> 1 ParkingSpot;
+  
+}
+
+class MonthlyUser
+{
+  isA Customer;
+  0..1 -> 1 ParkingSpot;
+}
+
+class Owner
+{
+  isA AccountHolder;
+
+}
+
+class ParkingSpot
+{
+  Floor floor;
+  int parkingID;
+   Boolean isAvailable;
+ 
+}
+
+class Bill
+{
+  Double price;
+  Date date;
+  CustomerType customerType;
+  Boolean isPaid;
+  int transactionID;
+  * -> 1 AccountHolder;
+  
+  }
+
+
+class ServiceRequest
+{
+  * -> 1 Services;
+  * -> 1 Bill;
+  Date date;
+  Status status;
+  
+  int serviceRequestID;
+}
+
+class ParkingLotApplication
+{
+  Time openTime;
+  Time closeTime;
+  Double monthlyFee;
+  Double hourlyFee;
+    int applicationID;
+}
+
+
+
+
+enum Floor {ONE, TWO, THREE, FOUR, FIVE};
+enum CustomerType {AccountHolder, NonAccountHolder};
+enum Status {Completed, InProgress};
+enum ServiceJob {TireChange, OilChange, Wash};
